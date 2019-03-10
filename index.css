@@ -37,3 +37,10 @@ h1 {
   color: var(--main-color);
   text-align: center
 }
+
+@media all and (max-width: 768px) {
+  body {
+    border: 10px solid var(--secondary-color);
+    padding: 30px;
+  }
+}
