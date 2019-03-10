@@ -1,7 +1,7 @@
 /* VARIABLES */
 :root {
   --main-color: #66ffff;
-  --secondary-color: deepPink;
+  --secondary-color: #F75C52;
 }
 
 * {
@@ -16,7 +16,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  border: 30px solid black;
+  border: 30px solid var(--secondary-color);
   background-image: url('./images/background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
