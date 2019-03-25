@@ -1,0 +1,234 @@
+
+  ##   #####  #    # #    # ##### ######  ####  
+ #  #  #    # #    # ##   #   #   #      #      
+#    # #    # #    # # #  #   #   #####   ####  
+###### #####  #    # #  # #   #   #           # 
+#    # #      #    # #   ##   #   #      #    # 
+#    # #       ####  #    #   #   ######  ####
+
+----------------------------------------------------------------------
+ESTADO
+
+$ git status -s
+$ git status --short
+
+DIFERENCIAS
+
+$ git diff 
+Para ver las diferencias entre el archivo sin preparar (working directory) con el ya preparado (staging area)
+
+$ git diff --staged
+Para ver las diferencias entre el archivo preparado (staging area) con lo que está listo (commit)
+
+
+HISTORIAL DE CONFIRMACIONES
+
+$ git log -p -2
+Para ver diferencias en el log y limitar las muestras a las 2 últimas.
+
+DESHACER
+
+$ git commit --amend
+En caso de hacer un commit, pero faltó algo, esto hará que los cambios que tienes se agreguen a tu último commit.
+Este comando usa el staging area, en caso de no haber ningún cambio, se podrá cambiar el mensaje
+----------------------------------------------------------------------
+
+$ rm -rf .git
+borrar archivos git
+Este es un comando de la terminal
+
+
+$ git status
+Si algo aparece en rojo es porque está en el working directory
+
+
+$ git add <file>
+Se coloca en el staging area
+$ git add -A
+Agregará todos los archivos
+$ git add -n <file>
+No lo agrega realmente :/
+
+
+$ git rm --caches <file>
+Esto borra de git, lo saca del staging area.
+$ git rm -f <file>
+ESto borra del git y elimina el archivo.
+$ git reset HEAD <file>
+Este es el método recomendado. Se detalla más abajo.q
+
+
+$git commit -m "message"
+$git commit --amend
+Para ajuntar un commit al commit anterior.
+$git commit --amend "message"
+Hace lo mismo que el anterior pero modifica el mensage.
+
+$git commit -am "message"
+!! Shorthand para add all y commit. No está funcionando
+
+
+$ git tag <version>
+Etiqueta ligera. Asi se etiqueta el último commit.
+$ git tag -a <version> -m <mensaje>
+$ git tag -l
+Para ver la lista.
+
+
+$ git log
+$ git log --oneline
+Resumen.
+$ git log --oneline --graph
+Muestra el árbol de ramificaciones.
+
+
+$ git diff <sha1>
+Cuando se le pasa solo un sha1 lo compara con el estado actual
+$ git diff <version1> <version2>
+
+
+$ git reset [--soft | --mixed | --hard ] [SHA1]
+git reset reescribe la historia del proyecto.
+--soft quita el commit pero lo mantiene todo en stage.
+Es parametro borra todo a partir del siguiente commit que se especifica.
+Una recomendación es que antes de hacer el reset se respalde el log:
+$ git log > bitacora_log.txt
+--mixed quita el commit y tambien lo saca del staging area.
+--hard quira todo. Incluso los archivos del working directory
+
+
+BRANCHES
+
+$ git branch -l
+$ git branch
+Para listar las ramificaciones.
+
+$ git branch <nombre>
+Para crear una nueva ramificación.co
+
+$ git branch -m <nombre anterior> <nuevo nombre>
+Para renombrar una rama.
+
+$ git branch -d <nombre>
+Para borrar una rama, solo si no tiene commits.
+
+$ git branch -D <nombre>
+Para borrar una rara, aunque tenga commits.
+
+$ git checkout <nombre de la rama>
+Esto es para moverte a la rama.
+
+$ git checkout -b <new-branch-name>
+Esto crear la rama y posicionarse en ella.
+
+$ git branch --merged y git branch --no-merged [branch que se quiera mostrar]
+
+
+REORGANIZACIÓN DE RAMIFICACIONES
+********************************
+
+git merge
+–––––––––
+
+$ git merge <branch-name>
+Primero hay que posicionarse en la rama a la que se le quiere hacer el merge
+Esta es la forma más sencilla de unir una rama. Git entiende que <branch-name> salio de la
+rama <master> por lo que no hay mucho más que hacer en este caso.
+El método que usará git será 'fast-forward'.
+Cuando se hace merge de otra rama, se hará de forma 'recursive' y abrirá el procesador de texto
+de la terminal.
+
+Se generará un conflicto cuando al hacer un merge alguna linea de código haya cambiado en las
+2 ramas.
+
+
+git rebase
+––––––––––
+
+Actualmente el gráfico del proyecto se ve así:
+
+* ec6db32 (HEAD -> master, updateA) Agregando el update A
+* 6acf32a Add fonts
+*   40ce8a9 (tag: v1.0) Merge branch 'nueva-imagen'
+|\  
+| * 6c37646 (nueva-imagen) Se agregó backgroun desert y se modificó color de bordes
+* |   e36c87b Merge branch 'responsive'
+|\ \  
+| * | 8323ae3 (responsive) cambio color border en mobile
+| * | a8ee4c1 Se modificó comportamiento del 'border' y el 'padding' en versión mobile
+| |/  
+* | 97979b8 (hotfix) hotfix
+|/  
+* 03f9dec Cambio de color en el border
+* d589212 (tag: 0.3) Se agrega background al title
+* 1ea3d50 (tag: 0.2) agregando estilos
+* 7c701e2 (tag: 0.1) inicializar nuestro landing
+
+Para que quede todo en una línea:
+Esto también reescribe la historia, por lo que puede afectar a otros.
+
+$ git rebase [nuevo-branch]
+
+Rebase hace lo mismo que merge, pero sin agregar la rama al gráfico, sino que lo agrega
+a la mima línea rescribiendo los hash.
+
+$ git rebase -i [nuevo-branch]
+Abre el editor y muestra comandos.
+
+
+---------------------------------------------------------------------------
+
+
+$ git stash
+Para guardar un estado sin hacer commit. Por ejemplo: estoy en la rama A
+y quiero moverme a la rama B, pero la rama A no tiene listos los
+cambios para commitear. Entonces puedo hacer el $ git stash
+
+Una vez de vuelta en la rama A, se debe reestablecer los cambios
+guardados en el stash.
+
+$ git stash list
+
+
+$ git cherry-pick [sha]
+Si quiero seleccionar un commit específico para llevarlo a otra rama. Por ejemplo tengo 2 ramas:
+master y rd. En rd corregí un hotfix que debió corregirse desde master. Voy a master, creo mi rama
+hotfix. pego el sha del commit con la corrección que se hizo en rd mientras estoy posicionado
+en la rama hotfix.
+
+
+
+
+TRABAJANDO EN REMOTO
+********************
+
+OPCIÓN 1 (fetch -> merge)
+
+Para unir un repositorio remoto a uno local se copia la url del repositorio.
+Luego, desde el directorio de mi proyecto:
+$ git remote add <name> <url>
+
+$ git remote -v
+Para ver los repositorios remotos.
+
+$ git remote remover <name>
+Para eliminar un remoto.
+
+
+Si el repo ya tiene archivos, no se puede subir nada sin antes haber unido los archivos del
+repo al local.
+
+$ git fetch <name> <branch>
+
+Esto crea una nueva rama (origin/master) en nuestro local que hay que unir con
+la rama (master?).
+
+$ git merge origin/master (arroja error)
+Esto arrojará un error => fatal: refusing to merge unrelated histories.
+
+Para subsanar eso:
+
+$ git merge origin/master --allow-unrelated-histories
+
+OPCIÓN 2.
+
