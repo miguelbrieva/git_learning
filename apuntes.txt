@@ -200,9 +200,16 @@ en la rama hotfix.
 
 
 TRABAJANDO EN REMOTO
+REMOTE BRANCHES
 ********************
 
+Se puede clonar un repositorio o trabajar sobre uno local y subirlo posteriormente.
+
+Siempre que se quiera subir una actualización se debe hacer una sincronización con la
+rama remota.
+
 OPCIÓN 1 (fetch -> merge)
+--------------------------
 
 Para unir un repositorio remoto a uno local se copia la url del repositorio.
 Luego, desde el directorio de mi proyecto:
@@ -231,7 +238,8 @@ Para subsanar eso:
 $ git merge origin/master --allow-unrelated-histories
 
 OPCIÓN 2 (pull)
+----------------------
 
-$ git pull 
+$ git pull
 
 
