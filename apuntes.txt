@@ -58,6 +58,14 @@ $ git reset HEAD <file>
 Este es el método recomendado. Se detalla más abajo.q
 
 
+La forma correcta de hacer un COMMIT:
+Cada commit debe estar lógicamente separado (one commit for issue).
+No más de 50 caractéres. Si se requiere más detalle. Dejar una línea en 
+blanco y seguir desde allí.
+Usar tiempo presente imperativo: 
+In other words, use commands. Instead of “I added tests for” or “Adding tests for,” use “Add tests for.” 
+"Agregar pruebas para"
+
 $git commit -m "message"
 $git commit --amend
 Para ajuntar un commit al commit anterior.
@@ -256,5 +264,12 @@ _________________________
 
 borrar una rama del remoto:
 $ git push origin --delete servefix
-Esto 
+
+
+DISTRIBUTED WORKFLOWS
+centralized workflow
+intregration-manager workflow
+dictator and lieutenants workflow
+
+
 
