@@ -208,8 +208,10 @@ Se puede clonar un repositorio o trabajar sobre uno local y subirlo posteriormen
 Siempre que se quiera subir una actualización se debe hacer una sincronización con la
 rama remota.
 
-OPCIÓN 1 (fetch -> merge)
+$ git remote show <remote>
+
 --------------------------
+OPCIÓN 1 (fetch -> merge)
 
 Para unir un repositorio remoto a uno local se copia la url del repositorio.
 Luego, desde el directorio de mi proyecto:
@@ -237,9 +239,22 @@ Para subsanar eso:
 
 $ git merge origin/master --allow-unrelated-histories
 
+Para clonar una rama específica en una nueva rama local:
+$ git checkoiut --track origin/servefix
+
+Para crear una rama con otro nombre:
+$ git checkout -v sf origin/servefix
+
+atajo:
+$ git merge @{u}
+_________________________
+
+_________________________
 OPCIÓN 2 (pull)
-----------------------
-
 $ git pull
+_________________________
 
+borrar una rama del remoto:
+$ git push origin --delete servefix
+Esto 
 
