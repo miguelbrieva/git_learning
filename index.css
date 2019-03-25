@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Anton');
 /* VARIABLES */
 :root {
-  --main-color: white;
-  --secondary-color: white;
+  --main-color: #04f0f4;
+  --secondary-color: black;
 }
 
 * {
@@ -12,13 +12,13 @@
 }
 
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Anton';
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   border: 30px solid var(--secondary-color);
-  background-image: url('./images/desert.jpg');
+  background-image: url('./images/background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -27,9 +27,9 @@ body {
 .title {
   width: 400px;
   border: 3px solid var(--main-color);
+  border-radius: 4px;
   padding: 2rem;
-  background: rgba(12, 49, 98, .5);
-  border-radius: 3px;
+  background-color: rgba(0,0,0,0.6);
 }
 
 h1 {
