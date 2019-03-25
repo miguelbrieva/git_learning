@@ -230,5 +230,8 @@ Para subsanar eso:
 
 $ git merge origin/master --allow-unrelated-histories
 
-OPCIÓN 2.
+OPCIÓN 2 (pull)
+
+$ git pull 
+
 
