@@ -7,6 +7,12 @@
 #    # #       ####  #    #   #   ######  ####
 
 ----------------------------------------------------------------------
+
+$ git help -a
+$ git help -g
+$ git help <command>
+
+
 ESTADO
 
 $ git status -s
@@ -178,7 +184,7 @@ Esto también reescribe la historia, por lo que puede afectar a otros.
 $ git rebase [nuevo-branch]
 
 Rebase hace lo mismo que merge, pero sin agregar la rama al gráfico, sino que lo agrega
-a la mima línea rescribiendo los hash.
+a la misma línea rescribiendo los hash.
 
 $ git rebase -i [nuevo-branch]
 Abre el editor y muestra comandos.
