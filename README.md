@@ -1,2 +1,2 @@
-# git_learning
+# learning git
 GIT learning repository
